@@ -2,13 +2,12 @@ import { motion } from 'framer-motion'
 import { Sparkles } from 'lucide-react'
 import { features } from '../data/content'
 import FeatureImageShowcase from '../components/FeatureImageShowcase'
-import UndercoverMockup from '../components/UndercoverMockup'
 
 // ── Image paths – replace `undefined` with a real import or URL when screenshots are ready ──
 const FEATURE_IMAGES: Record<'chat' | 'script' | 'undercover', string | undefined> = {
   chat: '/luyan/chat-screenshot.png',
   script: '/luyan/script-screenshot.png',
-  undercover: undefined, // TODO: 谁是卧底 DM 截图
+  undercover: '/luyan/undercover-screenshot.png',
 }
 
 export default function FeaturesSection() {
@@ -75,7 +74,6 @@ export default function FeaturesSection() {
           frameStyle="soft-panel"
           frameLabel="GAME · 谁是卧底"
           image={FEATURE_IMAGES.undercover}
-          customFrame={<UndercoverMockup />}
         />
 
       </div>
