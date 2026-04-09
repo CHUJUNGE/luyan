@@ -62,20 +62,20 @@ export default function TechSection() {
             <p className="text-xs text-accent-light/60 font-mono mb-4 tracking-widest">PROJECT STRUCTURE</p>
             <div className="font-mono text-sm space-y-1.5">
               {[
-                { indent: 0, text: 'luyan/', type: 'dir' },
-                { indent: 1, text: 'src/', type: 'dir' },
-                { indent: 2, text: 'components/', type: 'dir' },
-                { indent: 2, text: 'sections/', type: 'dir' },
-                { indent: 2, text: 'pages/', type: 'dir' },
-                { indent: 3, text: 'HomePage.tsx', type: 'file' },
-                { indent: 3, text: 'BoardPage.tsx', type: 'file' },
-                { indent: 2, text: 'data/', type: 'dir' },
-                { indent: 3, text: 'content.ts', type: 'file' },
-                { indent: 2, text: 'lib/', type: 'dir' },
-                { indent: 3, text: 'feishu.ts', type: 'file' },
-                { indent: 3, text: 'motion.ts', type: 'file' },
-                { indent: 2, text: 'App.tsx', type: 'file' },
-                { indent: 2, text: 'main.tsx', type: 'file' },
+                { indent: 0, text: 'workspace-xiatiao/', type: 'dir' },
+                { indent: 1, text: '.git/', type: 'dir' },
+                { indent: 1, text: '.openclaw/', type: 'dir' },
+                { indent: 1, text: 'AGENTS.md', type: 'file' },
+                { indent: 1, text: 'BOOTSTRAP.md', type: 'file' },
+                { indent: 1, text: 'HEARTBEAT.md', type: 'file' },
+                { indent: 1, text: 'IDENTITY.md', type: 'file' },
+                { indent: 1, text: 'memory/', type: 'dir' },
+                { indent: 1, text: 'PERSONA.md', type: 'file' },
+                { indent: 1, text: 'scripts/', type: 'dir' },
+                { indent: 1, text: 'skills/', type: 'dir' },
+                { indent: 1, text: 'SOUL.md', type: 'file' },
+                { indent: 1, text: 'TOOLS.md', type: 'file' },
+                { indent: 1, text: 'USER.md', type: 'file' },
               ].map((item, i) => (
                 <div
                   key={i}
