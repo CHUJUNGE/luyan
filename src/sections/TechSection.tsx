@@ -13,7 +13,7 @@ export default function TechSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(79,114,201,0.09)_0%,transparent_60%)] pointer-events-none" />
       <div className="max-w-5xl mx-auto relative z-10">
         <SectionTitle
-          title="不只是概念，而是一个已经跑起来的 OpenClaw Bot"
+          title="不是一次性 Demo，而是有组织能力的群聊智能体原型"
           align="center"
         />
 
@@ -25,11 +25,11 @@ export default function TechSection() {
             custom={0}
           >
             <p className="text-neutral-400 leading-relaxed text-sm mb-8">
-              虾得乐已经基于 OpenClaw 完成实际搭建，并运行在飞书群聊场景中。
+              虾得乐的重点不在于单个玩法本身，而在于它已经具备了承载多种群聊互动能力的原型结构。
               <br /><br />
               它不是简单的回复脚本，而是具备工程结构、模块组织和扩展基础的智能体系统。
               <br /><br />
-              我们在现场展示的不是录屏或假交互，而是真实可运行的群聊智能体。
+              对我们来说，技术价值不只是“做出来”，而是“能继续长出来”。
             </p>
 
             <div className="grid grid-cols-1 gap-4">
