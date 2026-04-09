@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Sparkles, MessageCircle, Star } from 'lucide-react'
 import ParticleBackground from '../components/ParticleBackground'
 import GlowButton from '../components/GlowButton'
 import OpenFeishuButton from '../components/OpenFeishuButton'
@@ -12,20 +12,48 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6">
-      <div className="absolute inset-0 bg-radial-glow pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_80%,rgba(79,114,201,0.08)_0%,transparent_60%)] pointer-events-none" />
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 bg-bg-primary">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_25%_20%,rgba(124,183,255,0.18)_0%,transparent_55%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_75%,rgba(141,223,195,0.15)_0%,transparent_55%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_15%,rgba(255,201,122,0.10)_0%,transparent_45%)] pointer-events-none" />
 
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(169,184,200,1) 1px, transparent 1px), linear-gradient(90deg, rgba(169,184,200,1) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
+      <ParticleBackground density={18} />
+
+      <motion.div
+        animate={{ y: [0, -10, 0], rotate: [0, 4, 0] }}
+        transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut' }}
+        className="absolute top-24 right-[14%] w-11 h-11 rounded-2xl bg-accent-orange/20 border border-accent-orange/35 flex items-center justify-center shadow-sm"
+      >
+        <Star size={18} className="text-accent-orange" />
+      </motion.div>
+
+      <motion.div
+        animate={{ y: [0, 8, 0], rotate: [0, -3, 0] }}
+        transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut', delay: 1 }}
+        className="absolute top-36 left-[11%] w-10 h-10 rounded-2xl bg-accent-blue/15 border border-accent-blue/25 flex items-center justify-center shadow-sm"
+      >
+        <Sparkles size={16} className="text-accent-blue" />
+      </motion.div>
+
+      <motion.div
+        animate={{ y: [0, -12, 0] }}
+        transition={{ repeat: Infinity, duration: 7, ease: 'easeInOut', delay: 2 }}
+        className="absolute bottom-36 left-[16%] w-10 h-10 rounded-2xl bg-accent-green/20 border border-accent-green/30 flex items-center justify-center shadow-sm"
+      >
+        <MessageCircle size={16} className="text-accent-green" />
+      </motion.div>
+
+      <motion.div
+        animate={{ y: [0, 9, 0], rotate: [0, 5, 0] }}
+        transition={{ repeat: Infinity, duration: 8, ease: 'easeInOut', delay: 0.5 }}
+        className="absolute bottom-44 right-[18%] w-8 h-8 rounded-full bg-accent-blue/20 border border-accent-blue/25 shadow-sm"
       />
 
-      <ParticleBackground density={50} />
+      <motion.div
+        animate={{ y: [0, -7, 0] }}
+        transition={{ repeat: Infinity, duration: 9, ease: 'easeInOut', delay: 3 }}
+        className="absolute top-1/2 right-[8%] w-6 h-6 rounded-full bg-accent-orange/25 border border-accent-orange/30"
+      />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         <motion.div
@@ -33,8 +61,9 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
           custom={0}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent-blue/30 text-accent-light text-xs tracking-widest mb-8 backdrop-blur-sm bg-accent-blue/5"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent-blue/30 text-accent-blue text-xs tracking-widest mb-8 bg-accent-blue/8"
         >
+          <span className="w-1.5 h-1.5 rounded-full bg-accent-blue" style={{ animation: 'breathe 2s ease-in-out infinite' }} />
           {siteConfig.teamName}
         </motion.div>
 
@@ -53,7 +82,7 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
           custom={2}
-          className="text-accent-light text-lg md:text-xl tracking-wide mb-8 font-light"
+          className="text-accent-blue text-lg md:text-xl tracking-wide mb-8 font-medium"
         >
           {siteConfig.productSubtitle}
         </motion.p>
@@ -63,7 +92,7 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
           custom={3}
-          className="text-2xl md:text-3xl font-medium text-neutral-100 mb-6 leading-snug"
+          className="text-2xl md:text-3xl font-semibold text-neutral-100 mb-6 leading-snug"
         >
           {siteConfig.tagline}
         </motion.p>
@@ -102,7 +131,7 @@ export default function HeroSection() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-          className="w-5 h-8 rounded-full border border-neutral-400/30 flex items-start justify-center pt-1.5"
+          className="w-5 h-8 rounded-full border border-accent-blue/30 flex items-start justify-center pt-1.5"
         >
           <div className="w-1 h-2 rounded-full bg-accent-blue/60" />
         </motion.div>

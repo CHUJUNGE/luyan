@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, Folder, FileText } from 'lucide-react'
 import SectionTitle from '../components/SectionTitle'
 import { techBadges } from '../data/content'
 import { fadeInUp } from '../lib/motion'
@@ -10,7 +10,7 @@ export default function TechSection() {
 
   return (
     <section className="relative py-28 px-6 bg-bg-secondary overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(79,114,201,0.09)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(141,223,195,0.10)_0%,transparent_60%)] pointer-events-none" />
       <div className="max-w-5xl mx-auto relative z-10">
         <SectionTitle
           title="不是一次性 Demo，而是有组织能力的群聊智能体原型"
@@ -29,10 +29,10 @@ export default function TechSection() {
               <br /><br />
               它不是简单的回复脚本，而是具备工程结构、模块组织和扩展基础的智能体系统。
               <br /><br />
-              对我们来说，技术价值不只是“做出来”，而是“能继续长出来”。
+              对我们来说，技术价值不只是"做出来"，而是"能继续长出来"。
             </p>
 
-            <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 gap-3">
               {techBadges.map((badge, i) => (
                 <motion.div
                   key={badge.label}
@@ -40,9 +40,9 @@ export default function TechSection() {
                   initial="hidden"
                   animate={inView ? 'visible' : 'hidden'}
                   custom={i + 1}
-                  className="flex items-start gap-4 glass-card rounded-lg p-4 border border-transparent hover:border-accent-blue/20 transition-all duration-300"
+                  className="flex items-start gap-4 glass-card rounded-xl p-4 hover:border-accent-green/30 hover:shadow-[0_4px_20px_rgba(47,58,79,0.08)] transition-all duration-300"
                 >
-                  <CheckCircle2 size={18} className="text-accent-light mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 size={18} className="text-accent-green mt-0.5 flex-shrink-0" />
                   <div>
                     <span className="text-neutral-100 font-medium text-sm block">{badge.label}</span>
                     <span className="text-neutral-400 text-xs">{badge.desc}</span>
@@ -57,9 +57,16 @@ export default function TechSection() {
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
             custom={1}
-            className="glass-card rounded-xl p-6 border border-accent-blue/10"
+            className="bg-white rounded-2xl p-6 border border-neutral-100/40 shadow-[0_4px_24px_rgba(47,58,79,0.08)]"
           >
-            <p className="text-xs text-accent-light/60 font-mono mb-4 tracking-widest">PROJECT STRUCTURE</p>
+            <div className="flex items-center gap-2 mb-5">
+              <div className="flex gap-1.5">
+                <div className="w-3 h-3 rounded-full bg-red-300/70" />
+                <div className="w-3 h-3 rounded-full bg-accent-orange/60" />
+                <div className="w-3 h-3 rounded-full bg-accent-green/60" />
+              </div>
+              <p className="text-xs text-neutral-400 font-mono ml-2 tracking-wider">PROJECT STRUCTURE</p>
+            </div>
             <div className="font-mono text-sm space-y-1.5">
               {[
                 { indent: 0, text: 'workspace-xiatiao/', type: 'dir' },
@@ -79,13 +86,14 @@ export default function TechSection() {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-1"
-                  style={{ paddingLeft: `${item.indent * 16}px` }}
+                  className="flex items-center gap-1.5"
+                  style={{ paddingLeft: `${item.indent * 18}px` }}
                 >
-                  <span className="text-accent-blue/40 select-none">
-                    {item.indent > 0 ? '├─ ' : ''}
-                  </span>
-                  <span className={item.type === 'dir' ? 'text-accent-light' : 'text-neutral-300'}>
+                  {item.type === 'dir'
+                    ? <Folder size={13} className="text-accent-orange flex-shrink-0" />
+                    : <FileText size={13} className="text-accent-blue/70 flex-shrink-0" />
+                  }
+                  <span className={item.type === 'dir' ? 'text-neutral-100 font-medium' : 'text-neutral-300'}>
                     {item.text}
                   </span>
                 </div>

@@ -23,7 +23,7 @@ export default function GlassCard({ children, className, index = 0, hover = true
       animate={inView ? 'visible' : 'hidden'}
       className={clsx(
         'glass-card rounded-xl p-6',
-        hover && 'transition-all duration-300 hover:border-accent-blue/30 hover:shadow-[0_0_30px_rgba(79,114,201,0.12)]',
+        hover && 'transition-all duration-300 hover:border-accent-blue/30 hover:shadow-[0_8px_32px_rgba(47,58,79,0.10)] hover:-translate-y-1',
         className,
       )}
     >

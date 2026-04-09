@@ -5,29 +5,35 @@ export default {
     extend: {
       colors: {
         bg: {
-          primary: '#0B0F17',
-          secondary: '#101826',
+          primary: '#FFFDF8',
+          secondary: '#EAF8F3',
+          tertiary: '#EAF4FF',
         },
         accent: {
-          blue: '#4F72C9',
-          light: '#6EA8FF',
+          blue: '#7CB7FF',
+          green: '#8DDFC3',
+          orange: '#FFC97A',
+          light: '#5BA8FF',
         },
         neutral: {
-          400: '#A9B8C8',
-          300: '#C9D3DD',
-          100: '#EEF3F8',
+          400: '#6E7A8F',
+          300: '#4A5568',
+          100: '#2F3A4F',
+        },
+        card: {
+          white: '#FFFFFF',
         },
         glow: {
-          cyan: '#8FD6FF',
-          mist: '#B8BFD9',
+          cyan: '#8DDFC3',
+          mist: '#EAF4FF',
         },
       },
       fontFamily: {
         sans: ['"Noto Sans SC"', 'Inter', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
-        'radial-glow': 'radial-gradient(ellipse at 50% 0%, rgba(79,114,201,0.18) 0%, transparent 70%)',
-        'card-glass': 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
+        'radial-glow': 'radial-gradient(ellipse at 50% 0%, rgba(124,183,255,0.12) 0%, transparent 70%)',
+        'card-glass': 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)',
       },
     },
   },

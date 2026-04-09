@@ -1,57 +1,83 @@
-import type { ElementType } from 'react'
 import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { MessagesSquare, ScrollText, ShieldQuestion } from 'lucide-react'
-import SectionTitle from '../components/SectionTitle'
+import { Sparkles } from 'lucide-react'
 import { features } from '../data/content'
-import { fadeInUp } from '../lib/motion'
+import FeatureImageShowcase from '../components/FeatureImageShowcase'
+import UndercoverMockup from '../components/UndercoverMockup'
 
-const iconMap: Record<string, ElementType> = {
-  MessagesSquare,
-  ScrollText,
-  ShieldQuestion,
+// ── Image paths – replace `undefined` with a real import or URL when screenshots are ready ──
+const FEATURE_IMAGES: Record<'chat' | 'script' | 'undercover', string | undefined> = {
+  chat: '/luyan/chat-screenshot.png',
+  script: '/luyan/script-screenshot.png',
+  undercover: undefined, // TODO: 谁是卧底 DM 截图
 }
 
 export default function FeaturesSection() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [f0, f1, f2] = features
 
   return (
-    <section className="relative py-28 px-6">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_50%,rgba(143,214,255,0.05)_0%,transparent_60%)] pointer-events-none" />
-      <div className="max-w-5xl mx-auto relative z-10">
-        <SectionTitle title="核心功能" align="center" />
+    <section className="relative py-28 px-6 bg-bg-tertiary overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(124,183,255,0.09)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(141,223,195,0.07)_0%,transparent_60%)] pointer-events-none" />
 
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {features.map((f, i) => {
-            const Icon = iconMap[f.iconName] ?? MessagesSquare
-            return (
-              <motion.div
-                key={f.id}
-                variants={fadeInUp}
-                initial="hidden"
-                animate={inView ? 'visible' : 'hidden'}
-                custom={i}
-                className="glass-card rounded-xl p-7 border border-transparent hover:border-accent-blue/25 hover:shadow-[0_0_30px_rgba(79,114,201,0.12)] transition-all duration-300 group flex flex-col"
-              >
-                <div className="w-12 h-12 rounded-xl bg-accent-blue/10 flex items-center justify-center mb-5 group-hover:bg-accent-blue/20 transition-colors">
-                  <Icon size={24} className="text-accent-light" />
-                </div>
-                <h3 className="text-neutral-100 font-semibold text-xl mb-3">{f.title}</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed mb-5 flex-1">{f.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {f.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs text-accent-light/70 bg-accent-blue/8 border border-accent-blue/15 rounded-full px-3 py-1"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            )
-          })}
+      <div className="max-w-6xl mx-auto relative z-10">
+
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-20 text-center"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-blue/10 border border-accent-blue/25 text-accent-blue text-xs tracking-widest mb-4 font-medium">
+            <Sparkles size={12} /> 核心功能
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-neutral-100">三种方式，让群聊重新活起来</h2>
+        </motion.div>
+
+        {/* ── Feature 1: 群聊氛围搭子 — 左文右图 ── */}
+        <div className="mb-28">
+          <FeatureImageShowcase
+            title={f0.title}
+            description={f0.description}
+            tags={f0.tags}
+            badge="主功能"
+            align="left"
+            accentColor="blue"
+            frameStyle="soft-panel"
+            frameLabel="CHAT · 群聊截图"
+            image={FEATURE_IMAGES.chat}
+          />
         </div>
+
+        {/* ── Feature 2: AI 剧本杀 DM — 左图右文 ── */}
+        <div className="mb-28">
+          <FeatureImageShowcase
+            title={f1.title}
+            description={f1.description}
+            tags={f1.tags}
+            badge="延展功能"
+            align="right"
+            accentColor="orange"
+            frameStyle="polaroid"
+            frameLabel="AI DM · 剧本杀"
+            image={FEATURE_IMAGES.script}
+          />
+        </div>
+
+        {/* ── Feature 3: 谁是卧底 DM — 左文右图 ── */}
+        <FeatureImageShowcase
+          title={f2.title}
+          description={f2.description}
+          tags={f2.tags}
+          badge="延展功能"
+          align="left"
+          accentColor="green"
+          frameStyle="soft-panel"
+          frameLabel="GAME · 谁是卧底"
+          image={FEATURE_IMAGES.undercover}
+          customFrame={<UndercoverMockup />}
+        />
+
       </div>
     </section>
   )

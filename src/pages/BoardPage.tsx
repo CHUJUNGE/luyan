@@ -11,20 +11,12 @@ const featureIcons = [MessagesSquare, ScrollText, ShieldQuestion]
 export default function BoardPage() {
   return (
     <div className="relative min-h-screen bg-bg-primary overflow-hidden flex flex-col">
-      <div className="absolute inset-0 bg-radial-glow pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(143,214,255,0.06)_0%,transparent_50%)] pointer-events-none" />
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(169,184,200,1) 1px, transparent 1px), linear-gradient(90deg, rgba(169,184,200,1) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-      />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(124,183,255,0.15)_0%,transparent_55%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_75%,rgba(141,223,195,0.12)_0%,transparent_55%)] pointer-events-none" />
       <ParticleBackground density={25} />
 
       <div className="absolute top-5 left-6 z-20">
-        <Link to="/" className="inline-flex items-center gap-2 text-neutral-400 text-sm hover:text-accent-light transition-colors">
+        <Link to="/" className="inline-flex items-center gap-2 text-neutral-400 text-sm hover:text-accent-blue transition-colors">
           <ArrowLeft size={15} />
           返回主页
         </Link>
@@ -38,7 +30,7 @@ export default function BoardPage() {
                 variants={fadeInUp}
                 initial="hidden"
                 animate="visible"
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent-blue/30 text-accent-light/70 text-xs tracking-widest mb-8"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent-blue/30 text-accent-blue text-xs tracking-widest mb-8 bg-accent-blue/8"
               >
                 {siteConfig.teamName}
               </motion.div>
@@ -48,7 +40,7 @@ export default function BoardPage() {
                 initial="hidden"
                 animate="visible"
                 custom={1}
-                className="text-6xl md:text-7xl font-bold text-neutral-100 mb-4 text-glow-blue tracking-tight"
+                className="text-6xl md:text-7xl font-bold text-neutral-100 mb-4 tracking-tight"
               >
                 {siteConfig.productName}
               </motion.h1>
@@ -58,7 +50,7 @@ export default function BoardPage() {
                 initial="hidden"
                 animate="visible"
                 custom={2}
-                className="text-accent-light text-lg tracking-wide mb-5 font-light"
+                className="text-accent-blue text-lg tracking-wide mb-5 font-medium"
               >
                 {siteConfig.productSubtitle}
               </motion.p>
@@ -68,7 +60,7 @@ export default function BoardPage() {
                 initial="hidden"
                 animate="visible"
                 custom={3}
-                className="text-xl font-medium text-neutral-200 mb-10 leading-snug"
+                className="text-xl font-medium text-neutral-100 mb-10 leading-snug"
               >
                 {siteConfig.tagline}
               </motion.p>
@@ -82,7 +74,7 @@ export default function BoardPage() {
               >
                 {techBadges.map((b) => (
                   <div key={b.label} className="flex items-center gap-3">
-                    <CheckCircle2 size={15} className="text-accent-light flex-shrink-0" />
+                    <CheckCircle2 size={15} className="text-accent-green flex-shrink-0" />
                     <span className="text-neutral-300 text-sm">
                       <span className="font-medium">{b.label}</span>
                       <span className="text-neutral-400"> — {b.desc}</span>
@@ -103,16 +95,18 @@ export default function BoardPage() {
               initial="hidden"
               animate="visible"
               custom={1}
-              className="glass-card rounded-xl p-6 border border-accent-blue/10"
+              className="glass-card rounded-2xl p-6"
             >
-              <p className="text-xs text-accent-light/50 tracking-widest font-mono mb-5">CORE FEATURES</p>
+              <p className="text-xs text-accent-blue/60 tracking-widest font-mono mb-5">CORE FEATURES</p>
               <div className="space-y-5">
                 {features.map((f, i) => {
                   const Icon = featureIcons[i]
+                  const iconBgs = ['bg-accent-blue/12', 'bg-accent-orange/15', 'bg-accent-green/15']
+                  const iconTexts = ['text-accent-blue', 'text-accent-orange', 'text-accent-green']
                   return (
                     <div key={f.id} className="flex items-start gap-4">
-                      <div className="w-9 h-9 rounded-lg bg-accent-blue/10 flex items-center justify-center flex-shrink-0">
-                        <Icon size={18} className="text-accent-light" />
+                      <div className={`w-9 h-9 rounded-xl ${iconBgs[i]} flex items-center justify-center flex-shrink-0`}>
+                        <Icon size={18} className={iconTexts[i]} />
                       </div>
                       <div>
                         <p className="text-neutral-100 font-medium text-sm mb-1">{f.title}</p>
@@ -129,9 +123,9 @@ export default function BoardPage() {
               initial="hidden"
               animate="visible"
               custom={2}
-              className="glass-card rounded-xl p-6 border border-accent-blue/10"
+              className="glass-card rounded-2xl p-6"
             >
-              <p className="text-xs text-accent-light/50 tracking-widest font-mono mb-4">DEMO GALLERY</p>
+              <p className="text-xs text-accent-blue/60 tracking-widest font-mono mb-4">DEMO GALLERY</p>
               <div className="grid grid-cols-3 gap-3">
                 {[
                   '群聊氛围搭子在运行',
@@ -140,7 +134,7 @@ export default function BoardPage() {
                 ].map((caption, i) => (
                   <div
                     key={i}
-                    className="aspect-[4/3] rounded-lg bg-gradient-to-br from-bg-secondary to-bg-primary border border-neutral-400/10 flex items-center justify-center p-2"
+                    className="aspect-[4/3] rounded-xl bg-gradient-to-br from-bg-tertiary to-bg-secondary border border-accent-blue/10 flex items-center justify-center p-2"
                   >
                     <p className="text-neutral-400 text-[10px] text-center leading-relaxed">{caption}</p>
                   </div>
@@ -155,7 +149,7 @@ export default function BoardPage() {
           initial="hidden"
           animate="visible"
           custom={6}
-          className="mt-10 pt-6 border-t border-neutral-400/10 flex flex-wrap items-center justify-between gap-4"
+          className="mt-10 pt-6 border-t border-neutral-400/15 flex flex-wrap items-center justify-between gap-4"
         >
           <div className="flex flex-wrap gap-5">
             {['OpenClaw-powered', 'Feishu-native', 'Live demo ready', 'Workplace entertainment for introverts'].map((tag) => (
