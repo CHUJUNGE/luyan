@@ -1,28 +1,9 @@
-export const FEISHU_GROUP_DEEPLINK = '替换为实际的飞书 deeplink'
-export const FEISHU_GROUP_WEB_URL = '替换为备用网页链接'
+export const FEISHU_GROUP_DEEPLINK = 'https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=1ebkf5eb-70ee-4039-a615-e80a9fed9065'
+export const FEISHU_GROUP_WEB_URL = 'https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=1ebkf5eb-70ee-4039-a615-e80a9fed9065'
 
 export function openFeishuGroup(): Promise<boolean> {
-  return new Promise((resolve) => {
-    const iframe = document.createElement('iframe')
-    iframe.style.display = 'none'
-    iframe.src = FEISHU_GROUP_DEEPLINK
-    document.body.appendChild(iframe)
-
-    const timeout = setTimeout(() => {
-      document.body.removeChild(iframe)
-      resolve(false)
-    }, 2000)
-
-    window.addEventListener(
-      'blur',
-      () => {
-        clearTimeout(timeout)
-        document.body.removeChild(iframe)
-        resolve(true)
-      },
-      { once: true },
-    )
-  })
+  window.open(FEISHU_GROUP_DEEPLINK, '_blank')
+  return Promise.resolve(true)
 }
 
 export function copyFeishuLink(): void {
